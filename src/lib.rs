@@ -340,7 +340,7 @@ impl<T> Sender<T> {
     /// s.try_broadcast(2).unwrap();
     /// assert_eq!(s.try_broadcast(2), Err(TrySendError::Full(2)));
     /// ```
-    pub fn set_capacity(&mut self, new_cap: usize) {
+    pub fn set_capacity(&self, new_cap: usize) {
         self.inner.write().set_capacity(new_cap);
     }
 
@@ -381,7 +381,7 @@ impl<T> Sender<T> {
     /// assert_eq!(r.try_recv().unwrap(), 4);
     /// assert_eq!(r.try_recv(), Err(TryRecvError::Empty));
     /// ```
-    pub fn set_overflow(&mut self, overflow: bool) {
+    pub fn set_overflow(&self, overflow: bool) {
         self.inner.write().overflow = overflow;
     }
 
